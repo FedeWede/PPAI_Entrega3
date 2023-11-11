@@ -1,0 +1,17 @@
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\obj\Debug\net6.0-windows\PPAI_Entrega3.NewFolder1.InterfazIVR.resources
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\obj\Debug\net6.0-windows\PPAI_Entrega3.Interfaces.InterfazRegistrarRespuesta.resources
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\obj\Debug\net6.0-windows\PPAI_Entrega3.csproj.GenerateResource.cache
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\obj\Debug\net6.0-windows\PPAI_Entrega3.GeneratedMSBuildEditorConfig.editorconfig
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\obj\Debug\net6.0-windows\PPAI_Entrega3.AssemblyInfoInputs.cache
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\obj\Debug\net6.0-windows\PPAI_Entrega3.AssemblyInfo.cs
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\obj\Debug\net6.0-windows\PPAI_Entrega3.csproj.CoreCompileInputs.cache
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\bin\Debug\net6.0-windows\PPAI_Entrega3.exe
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\bin\Debug\net6.0-windows\PPAI_Entrega3.deps.json
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\bin\Debug\net6.0-windows\PPAI_Entrega3.runtimeconfig.json
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\bin\Debug\net6.0-windows\PPAI_Entrega3.dll
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\bin\Debug\net6.0-windows\PPAI_Entrega3.pdb
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\obj\Debug\net6.0-windows\PPAI_Entrega3.dll
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\obj\Debug\net6.0-windows\refint\PPAI_Entrega3.dll
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\obj\Debug\net6.0-windows\PPAI_Entrega3.pdb
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\obj\Debug\net6.0-windows\PPAI_Entrega3.genruntimeconfig.cache
+E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\obj\Debug\net6.0-windows\ref\PPAI_Entrega3.dll
