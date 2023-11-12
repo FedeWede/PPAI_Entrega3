@@ -12,11 +12,8 @@ namespace PPAI_Entrega3.Entidades
     {
         public Iniciada(string nombre) : base(nombre)
         {
-            this.nombre = nombre;
+            this.Nombre = nombre;
         }
-
-
-        public string Nombre { get; set; }
 
 
         public override void tomadaPorOperador(DateTime fechaHoraActual, Llamada llamada)

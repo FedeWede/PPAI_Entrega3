@@ -12,7 +12,7 @@ namespace PPAI_Entrega3.Entidades
     {
         public EnCurso(string nombre) : base(nombre)
         {
-            this.nombre = nombre;
+            this.Nombre = nombre;
         }
 
         public override void finalizar(DateTime fechaHoraActual, Llamada llamada)

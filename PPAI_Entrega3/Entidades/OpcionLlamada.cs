@@ -12,30 +12,29 @@ namespace PPAI_Entrega3.Entidades
     {
         // Atributos
         [Key]
-        public int idOpcionLlamada { get; set; }
-        public string audioMensajeSubOpciones { get; set; }
-        public string mensajeSubOpciones { get; set; }
-        public string nombre { get; set; }
-        public int nroOrden { get; set; }
+        public int Id { get; set; }
+        public int NroOrden { get; set; }
+        public string AudioMensajeSubOpciones { get; set; }
+        public string MensajeSubOpciones { get; set; }
+        public string Nombre { get; set; }
 
         // Relación de agregación
-        public virtual List<SubOpcionLlamada> subOpciones { get; set; }
-        public virtual List<Validacion> validacion { get; set; }
-        public virtual SubOpcionLlamada subOpcionLlamada { get; set; }
+        public  List<SubOpcionLlamada>? SubOpciones { get; set; }
+        public List<Validacion>? Validacion { get; set; }
 
         // Constructor
         public OpcionLlamada(string audioMensajeSubOpciones, string mensajeSubOpciones, string nombre, int nroOrden,
-            List<SubOpcionLlamada> subOpciones, List<Validacion> Validacion)
+            List<SubOpcionLlamada> subOpciones, List<Validacion> validaciones)
         {
             // Inicializar atributos
-            this.audioMensajeSubOpciones = audioMensajeSubOpciones;
-            this.mensajeSubOpciones = mensajeSubOpciones;
-            this.nombre = nombre;
-            this.nroOrden = nroOrden;
+            this.AudioMensajeSubOpciones = audioMensajeSubOpciones;
+            this.MensajeSubOpciones = mensajeSubOpciones;
+            this.Nombre = nombre;
+            this.NroOrden = nroOrden;
 
             // Inicializar relación
-            this.subOpciones = new List<SubOpcionLlamada>();
-            this.validacion = new List<Validacion>();
+            this.SubOpciones = subOpciones;
+            this.Validacion = validaciones;
         }
 
         public OpcionLlamada() { }
@@ -45,39 +44,39 @@ namespace PPAI_Entrega3.Entidades
 
         public void setAudioMensajeSubOpciones(string audioMensajeSubOpciones)
         {
-            this.audioMensajeSubOpciones = audioMensajeSubOpciones;
+            this.AudioMensajeSubOpciones = audioMensajeSubOpciones;
         }
 
         public String getAudioMensajeSubOpciones()
         {
-            return this.audioMensajeSubOpciones;
+            return this.AudioMensajeSubOpciones;
         }
         public void setMensajeSubOpciones(string mensajeSubOpciones)
         {
-            this.mensajeSubOpciones = mensajeSubOpciones;
+            this.MensajeSubOpciones = mensajeSubOpciones;
         }
 
         public String getMensajeSubOpciones()
         {
-            return this.mensajeSubOpciones;
+            return this.MensajeSubOpciones;
         }
         public void setNombre(string nombre)
         {
-            this.nombre = nombre;
+            this.Nombre = nombre;
         }
 
         public String getNombre()
         {
-            return this.nombre;
+            return this.Nombre;
         }
         public void setNroOrden(int nroOrden)
         {
-            this.nroOrden = nroOrden;
+            this.NroOrden = nroOrden;
         }
 
         public int getNroOrden()
         {
-            return this.nroOrden;
+            return this.NroOrden;
         }
 
         // Método

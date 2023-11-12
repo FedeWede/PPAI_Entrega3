@@ -12,25 +12,25 @@ namespace PPAI_Entrega3.Entidades
     {
         // Atributos
         [Key]
-        public int idValidacion { get; set; }
-        public string audioMensajeValidacion { get; set; }
-        public string nombre { get; set; }
-        public int nroOrden { get; set; }
+        public int Id { get; set; }
+        public string AudioMensajeValidacion { get; set; }
+        public string Nombre { get; set; }
+        public int NroOrden { get; set; }
 
         // Relación
-        public virtual TipoInformacion tipoInformacion {  get; set; }
+        public virtual TipoInformacion TipoInformacion { get; set; }
 
         // Constructor
         public Validacion(string audioMensajeValidacion, string nombre, int nroOrden, TipoInformacion tipoInformacion)
         {
             // Inicializar atributos
-            this.audioMensajeValidacion = audioMensajeValidacion;
-            this.nombre = nombre;
-            this.nroOrden = nroOrden;
+            this.AudioMensajeValidacion = audioMensajeValidacion;
+            this.Nombre = nombre;
+            this.NroOrden = nroOrden;
             
 
             // Inicializar relación
-           this.tipoInformacion = tipoInformacion;
+           this.TipoInformacion = tipoInformacion;
         }
 
         public Validacion() { }
@@ -39,7 +39,7 @@ namespace PPAI_Entrega3.Entidades
         public string getMensaje()
         {
             // Implementación del método
-            return this.nombre;
+            return this.Nombre;
         }
     }
 

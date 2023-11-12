@@ -12,22 +12,23 @@ namespace PPAI_Entrega3.Entidades
     {
         // Atributos
         [Key]
-        public int idSubOpcionLLamada { get; set; }
-        public string nombre { get; set; }
-        public int nroOrden { get; set; }
+        public int Id { get; set; }
+        public int NroOrden { get; set; }
+        public string Nombre { get; set; }
+
 
         // Relación
-        public virtual List<Validacion> validaciones { get; set; }
+        public virtual List<Validacion> Validaciones { get; set; }
 
         // Constructor
         public SubOpcionLlamada(string nombre, int nroOrden, List<Validacion> validaciones)
         {
             // Inicializar atributos
-            this.nombre = nombre;
-            this.nroOrden = nroOrden;
+            this.Nombre = nombre;
+            this.NroOrden = nroOrden;
 
             // Inicializar relación
-            this.validaciones = validaciones;
+            this.Validaciones = validaciones;
         }
 
         public SubOpcionLlamada() { }
@@ -35,22 +36,22 @@ namespace PPAI_Entrega3.Entidades
 
         public void setNombre(string nombre)
         {
-            this.nombre = nombre;
+            this.Nombre = nombre;
         }
 
         public String getNombre()
         {
-            return this.nombre;
+            return this.Nombre;
         }
 
         public void setNroOrden(int nroOrden)
         {
-            this.nroOrden = nroOrden;
+            this.NroOrden = nroOrden;
         }
 
         public int getNroOrden()
         {
-            return this.nroOrden;
+            return this.NroOrden;
         }
         // Métodos
     

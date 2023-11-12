@@ -12,27 +12,26 @@ namespace PPAI_Entrega3.Entidades
     {
         // Atributos
         [Key]
-        public int idCategoria { get; set; }
-        public string audioMensajeOpciones { get; set; }
-        public string mensajeOpciones { get; set; }
-        public string nombre { get; set; }
-        public int nroOrden { get; set; }
+        public int Id { get; set; }
+        public string AudioMensajeOpciones { get; set; }
+        public string MensajeOpciones { get; set; }
+        public string Nombre { get; set; }
+        public int NroOrden { get; set; }
 
         // Relación de agregación
-        public virtual List<OpcionLlamada> opciones { get; set; }
-        public virtual OpcionLlamada opcionLlamada { get; set; }
+        public virtual List<OpcionLlamada> Opciones { get; set; }
 
         // Constructor
         public Categoria(string audioMensajeOpciones, string mensajeOpciones, string nombre, int nroOrden, List<OpcionLlamada> opciones)
         {
             // Inicializar atributos
-            this.audioMensajeOpciones = audioMensajeOpciones;
-            this.mensajeOpciones = mensajeOpciones;
-            this.nombre = nombre;
-            this.nroOrden = nroOrden;
+            this.AudioMensajeOpciones = audioMensajeOpciones;
+            this.MensajeOpciones = mensajeOpciones;
+            this.Nombre = nombre;
+            this.NroOrden = nroOrden;
 
             // Inicializar relación
-            this.opciones = opciones;
+            this.Opciones = opciones;
         }
 
         public Categoria() { }
@@ -41,39 +40,39 @@ namespace PPAI_Entrega3.Entidades
 
         public void setAudioMensajeOpciones(string audioMensajeOpciones)
         {
-            this.audioMensajeOpciones = audioMensajeOpciones;
+            this.AudioMensajeOpciones = audioMensajeOpciones;
         }
 
         public String getAudioMensajeOpciones()
         {
-            return this.audioMensajeOpciones;
+            return this.AudioMensajeOpciones;
         }
         public void setMensajeOpciones(string mensajeOpciones)
         {
-            this.mensajeOpciones = mensajeOpciones;
+            this.MensajeOpciones = mensajeOpciones;
         }
 
         public String getmMensajeOpciones()
         {
-            return this.mensajeOpciones;
+            return this.MensajeOpciones;
         }
         public void setNombre(string nombre)
         {
-            this.nombre = nombre;
+            this.Nombre = nombre;
         }
 
         public String getNombre()
         {
-            return this.nombre;
+            return this.Nombre;
         }
         public void setNroOrden(int nroOrden)
         {
-            this.nroOrden = nroOrden;
+            this.NroOrden = nroOrden;
         }
 
         public int getNroOrden()
         {
-            return this.nroOrden;
+            return this.NroOrden;
         }
 
         // Métodos

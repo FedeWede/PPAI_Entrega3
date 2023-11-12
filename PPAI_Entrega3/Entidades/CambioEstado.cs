@@ -12,43 +12,43 @@ namespace PPAI_Entrega3.Entidades
     {
         // Atributos
         [Key]
-        public int idCambioEstado { get; set; }
-        public DateTime fechaHoraInicio { get; set; }
+        public int Id { get; set; }
+        public DateTime FechaHoraInicio { get; set; }
+
         // Relación
-        public virtual Estado estado { get; set; }
+        public virtual Estado Estado { get; set; }
 
         // Constructor
         public CambioEstado(DateTime fechaHoraInicio, Estado estado)
         {
             // Inicializar atributos
-            this.fechaHoraInicio = fechaHoraInicio;
+            this.FechaHoraInicio = fechaHoraInicio;
             // Inicializar relación
-            this.estado = estado;
+            this.Estado = estado;
         }
 
-        public CambioEstado()
-        {
-        }
+        public CambioEstado() { }
+    
 
         // Métodos
 
         public void setFechaHoraInicio(DateTime fechaHoraInicio)
         {
             
-            this.fechaHoraInicio = fechaHoraInicio;
+            this.FechaHoraInicio = fechaHoraInicio;
         }
         public DateTime getFechaHoraInicio()
         {
             
-            return fechaHoraInicio;
+            return FechaHoraInicio;
         }
 
         public string getNombreEstado()
         {
             // Implementación del método
-            if (estado != null)
+            if (Estado != null)
             {
-                return estado.nombre;
+                return Estado.Nombre;
             }
             else
             {

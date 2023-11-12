@@ -12,7 +12,7 @@ namespace PPAI_Entrega3.Persistencia
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=IvrDB.db");
+            optionsBuilder.UseSqlite(@"Data Source=E:\PPAI Entrega 2\PPAI_Entrega3\PPAI_Entrega3\PPAI_Entrega3\IvrDB.db");
         }
         
         public DbSet<CambioEstado> CambioEstado { get; set; }

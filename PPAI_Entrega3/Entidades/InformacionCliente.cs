@@ -12,22 +12,22 @@ namespace PPAI_Entrega3.Entidades
     {
         // Atributos
         [Key]
-        public int idInformacionCliente { get; set; }
-        public string datoAValidar { get; set; }
+        public int Id { get; set; }
+        public string DatoAValidar { get; set; }
 
         // Relaciones
-        public virtual Validacion validacion { get; set; }
-        public virtual TipoInformacion tipoInformacion { get; set; }
+        public virtual Validacion Validacion { get; set; }
+        public virtual TipoInformacion TipoInformacion { get; set; }
 
         // Constructor
         public InformacionCliente(string datoAValidar, Validacion validacion, TipoInformacion TipoInformacion)
         {
             // Inicializar atributos
-            this.datoAValidar = datoAValidar;
+            this.DatoAValidar = datoAValidar;
 
             // Inicializar relaciones
-            this.validacion = validacion;
-            this.tipoInformacion = tipoInformacion;
+            this.Validacion = validacion;
+            this.TipoInformacion = this.TipoInformacion;
         }
 
         public InformacionCliente() { }
@@ -36,19 +36,19 @@ namespace PPAI_Entrega3.Entidades
 
         public void setDatoAValidar(string datoAValidar)
         {
-            this.datoAValidar = datoAValidar;
+            this.DatoAValidar = datoAValidar;
         }
 
         public String getdatoAValidar()
         {
-            return this.datoAValidar;
+            return this.DatoAValidar;
         }
 
         // Métodos      
         public bool esValidacion(string val)
         {
             bool bandera = false;
-            string nombreVal = this.validacion.nombre;
+            string nombreVal = this.Validacion.Nombre;
             if (val == nombreVal)
             {
                 bandera = true;
@@ -59,7 +59,7 @@ namespace PPAI_Entrega3.Entidades
         public bool esInformacionCorrecta(string info)
         {
             bool bandera = false;
-            if (info == this.datoAValidar)
+            if (info == this.DatoAValidar)
             {
                 bandera = true;
             }
