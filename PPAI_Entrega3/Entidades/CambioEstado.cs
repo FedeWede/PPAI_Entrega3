@@ -12,20 +12,20 @@ namespace PPAI_Entrega3.Entidades
     {
         // Atributos
         [Key]
-        public int idCambioEstado { get; set; }
-        public DateTime fechaHoraInicio { get; set; }
-        public DateTime? fechaHoraFin { get; set; }
+        public int Id { get; set; }
+        public DateTime FechaHoraInicio { get; set; }
+        public DateTime? FechaHoraFin { get; set; }
+
         // Relación
-        public virtual Estado estado { get; set; }
+        public virtual Estado Estado { get; set; }
 
         // Constructor
         public CambioEstado(DateTime fechaHoraInicio, Estado estado)
         {
             // Inicializar atributos
-            this.fechaHoraInicio = fechaHoraInicio;
+            this.FechaHoraInicio = fechaHoraInicio;
             // Inicializar relación
-            this.estado = estado;
-            this.fechaHoraFin = null;
+            this.Estado = estado;
         }
 
         public CambioEstado()
@@ -37,26 +37,26 @@ namespace PPAI_Entrega3.Entidades
         public void setFechaHoraInicio(DateTime fechaHoraInicio)
         {
             
-            this.fechaHoraInicio = fechaHoraInicio;
+            this.FechaHoraInicio = fechaHoraInicio;
         }
         public DateTime getFechaHoraInicio()
         {
             
-            return fechaHoraInicio;
+            return FechaHoraInicio;
         }
 
         public void setFechaHoraFin(DateTime fechaHoraFin)
         {
             
-            this.fechaHoraFin = fechaHoraFin;
+            this.FechaHoraFin = fechaHoraFin;
         }
 
         public string getNombreEstado()
         {
             // Implementación del método
-            if (estado != null)
+            if (Estado != null)
             {
-                return estado.nombre;
+                return Estado.Nombre;
             }
             else
             {
@@ -66,7 +66,7 @@ namespace PPAI_Entrega3.Entidades
 
         public Boolean esEstadoActual()
         {
-            return fechaHoraFin == null;
+            return FechaHoraFin == null;
         }
     }
 }

@@ -12,14 +12,14 @@ namespace PPAI_Entrega3.Entidades
     {
         // Atributos
         [Key]
-        public int idEstado { get; set;  }
-        public string nombre { get; set; }
+        public int Id { get; set;  }
+        public string Nombre { get; set; }
 
         // Constructor
         public Estado(string nombre)
         {
             // Inicializar atributos
-            this.nombre = nombre;
+            this.Nombre = nombre;
         }
 
         /*
@@ -34,7 +34,7 @@ namespace PPAI_Entrega3.Entidades
         */
         public string getNombre()
         {
-            return this.nombre;
+            return this.Nombre;
         }
 
         public virtual void tomadaPorOperador(DateTime fechaHoraActual, Llamada llamada, List<CambioEstado> cambioestado) { }

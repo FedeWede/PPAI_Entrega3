@@ -12,7 +12,7 @@ namespace PPAI_Entrega3.Entidades
     {
         public Finalizada(string nombre) : base(nombre)
         {
-            this.nombre = nombre;
+            this.Nombre = nombre;
         }
 
         public override CambioEstado crearCambioEstado(DateTime fechaInicio, Estado estado)

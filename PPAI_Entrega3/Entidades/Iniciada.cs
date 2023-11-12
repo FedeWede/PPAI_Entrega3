@@ -12,7 +12,7 @@ namespace PPAI_Entrega3.Entidades
     {
         public Iniciada(string nombre) : base(nombre)
         {
-            this.nombre = nombre;
+            this.Nombre = nombre;
         }
 
 

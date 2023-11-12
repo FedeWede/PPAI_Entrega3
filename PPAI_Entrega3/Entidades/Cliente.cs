@@ -13,25 +13,25 @@ namespace PPAI_Entrega3.Entidades
     {
         // Atributos
         [Key]
-        public int IdCliente { get; set; }
-        public string dni { get; set; }
-        public string nombreCompleto { get; set; }
-        public string numeroCelular { get; set; }
+        public int Id { get; set; }
+        public string Dni { get; set; }
+        public string NombreCompleto { get; set; }
+        public string? NumeroCelular { get; set; }
 
 
         // Relación
-        public virtual List<InformacionCliente> informacionCliente { get; set; }
+        public virtual List<InformacionCliente> InformacionCliente { get; set; }
 
         // Constructor
         public Cliente(string dni, string nombreCompleto, string numeroCelular, List<InformacionCliente> informacionCliente)
         {
             // Inicializar atributos
-            this.dni = dni;
-            this.nombreCompleto = nombreCompleto;
-            this.numeroCelular = numeroCelular;
+            this.Dni = dni;
+            this.NombreCompleto = nombreCompleto;
+            this.NumeroCelular = numeroCelular;
 
             // Inicializar relación
-            this.informacionCliente = informacionCliente; // Cambiado por el new
+            this.InformacionCliente = informacionCliente; // Cambiado por el new
         }
 
         public Cliente() { }
@@ -39,31 +39,31 @@ namespace PPAI_Entrega3.Entidades
         //Metodos de Seteo
         public void setDni(string dni)
         {
-            this.dni = dni;
+            this.Dni = dni;
         }
 
         public String getDni()
         {
-            return this.dni;
+            return this.Dni;
         }
         public void setNombreCompleto(string nombreCompleto)
         {
-            this.nombreCompleto = nombreCompleto;
+            this.NombreCompleto = nombreCompleto;
         }
 
         public String getNombreClienteLlamada()
         {
-            return this.nombreCompleto;
+            return this.NombreCompleto;
         }
 
         public void setNumeroCelular(string numeroCelular)
         {
-            this.numeroCelular = numeroCelular;
+            this.NumeroCelular = numeroCelular;
         }
 
         public String getNumeroCelular()
         {
-            return this.numeroCelular;
+            return this.NumeroCelular;
         }
 
         // Métodos
@@ -71,7 +71,7 @@ namespace PPAI_Entrega3.Entidades
         public bool esInformacionCorrecta(string info, string validacion, Llamada llamada)
         {
             bool bandera = false;
-            foreach (InformacionCliente informacionCliente in llamada.cliente.informacionCliente)
+            foreach (InformacionCliente informacionCliente in llamada.Cliente.InformacionCliente)
             {
                 if (informacionCliente.esValidacion(validacion) == true)
                 {   
@@ -96,7 +96,7 @@ namespace PPAI_Entrega3.Entidades
         public string buscarInfoCorrecta(Llamada llamada, string validacion)
         {
             string correcta = "No hay correcta";
-            foreach (InformacionCliente informacionCliente in llamada.cliente.informacionCliente)
+            foreach (InformacionCliente informacionCliente in llamada.Cliente.InformacionCliente)
             {
                 if (informacionCliente.esValidacion(validacion) == true)
                 {

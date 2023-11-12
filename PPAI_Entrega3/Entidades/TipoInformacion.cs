@@ -12,28 +12,28 @@ namespace PPAI_Entrega3.Entidades
     {
         // Atributos
         [Key]
-        public int idTipoInformacion { get; set; }
-        public string nombre { set; get; }
-        public string descripcion { set; get; }
+        public int Id { get; set; }
+        public string Nombre { set; get; }
+        public string Descripcion { set; get; }
 
         // Constructor
         public TipoInformacion(string nombre, string descripcion)
         {
             // Inicializar atributos
-            this.nombre = nombre;
-            this.descripcion = descripcion;
+            this.Nombre = nombre;
+            this.Descripcion = descripcion;
         }
 
         //Metodos de Seteo
 
         public void setNombre(string nombre)
         {
-            this.nombre = nombre;
+            this.Nombre = nombre;
         }
 
         public String getNombre()
         {
-            return this.nombre;
+            return this.Nombre;
         }
     }
 

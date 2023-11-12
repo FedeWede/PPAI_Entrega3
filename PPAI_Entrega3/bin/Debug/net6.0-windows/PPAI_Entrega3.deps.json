@@ -11,6 +11,7 @@
           "Microsoft.EntityFrameworkCore": "7.0.13",
           "Microsoft.EntityFrameworkCore.Design": "7.0.13",
           "Microsoft.EntityFrameworkCore.Sqlite": "7.0.13",
+          "Microsoft.EntityFrameworkCore.Sqlite.Core": "7.0.13",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.13"
         },
         "runtime": {

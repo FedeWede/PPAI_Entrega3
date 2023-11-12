@@ -16,19 +16,19 @@ namespace PPAI_Entrega3.Entidades
     {
         // Atributos
         [Key]
-        public int idLlamada {  get; set; }
-        public string descripcionOperador { get; set; }
-        public string detalleAccionRequerida { get; set; }
-        public TimeSpan duracion { get; set; }
-        public bool encuestaEnviada { get; set; }
-        public string observacionAuditor { get; set; }
+        public int Id {  get; set; }
+        public string DescripcionOperador { get; set; }
+        public string DetalleAccionRequerida { get; set; }
+        public TimeSpan Duracion { get; set; }
+        public bool EncuestaEnviada { get; set; }
+        public string ObservacionAuditor { get; set; }
 
         // Relaciones
-        public virtual Cliente cliente { get; set; }
-        public virtual SubOpcionLlamada subOpcionLlamada { get; set; }
-        public virtual OpcionLlamada opcionLlamada { get; set; }
-        public virtual List<CambioEstado> cambiosDeEstado { get; set; }
-        public virtual Estado estado { get; set; }
+        public virtual Cliente Cliente { get; set; }
+        public virtual SubOpcionLlamada SubOpcionLlamada { get; set; }
+        public virtual OpcionLlamada? OpcionLlamada { get; set; }
+        public virtual List<CambioEstado> CambiosDeEstado { get; set; }
+        public virtual Estado Estado { get; set; }
 
         // estado
 
@@ -39,18 +39,18 @@ namespace PPAI_Entrega3.Entidades
             List<CambioEstado> cambioDeEstado, Estado estado)
         {
             // Inicializar atributos
-            this.descripcionOperador = descripcionOperador;
-            this.detalleAccionRequerida = detalleAccionRequerida;
-            this.duracion = duracion;
-            this.encuestaEnviada = encuestaEnviada;
-            this.observacionAuditor = observacionAuditor;
+            this.DescripcionOperador = descripcionOperador;
+            this.DetalleAccionRequerida = detalleAccionRequerida;
+            this.Duracion = duracion;
+            this.EncuestaEnviada = encuestaEnviada;
+            this.ObservacionAuditor = observacionAuditor;
 
             // Inicializar relaciones
-            this.cliente = cliente;
-            this.subOpcionLlamada = subOpcionLlamada;
-            this.opcionLlamada = opcionLlamada;
-            this.cambiosDeEstado = cambioDeEstado; // Cambiado por el new
-            this.estado = estado;
+            this.Cliente = cliente;
+            this.SubOpcionLlamada = subOpcionLlamada;
+            this.OpcionLlamada = opcionLlamada;
+            this.CambiosDeEstado = cambioDeEstado; // Cambiado por el new
+            this.Estado = estado;
         }
 
         public Llamada() { }
@@ -59,85 +59,85 @@ namespace PPAI_Entrega3.Entidades
 
         public void setCambioEstado(CambioEstado estado)
         {
-            this.cambiosDeEstado.Add(estado);
+            this.CambiosDeEstado.Add(estado);
         }
 
         public void setEstadoLlamada(Estado estado)
         {
 
-            this.estado = estado;
+            this.Estado = estado;
 
         }
 
         public void setDescripcionOperador(string descripcionOperador)
         {
-            this.descripcionOperador = descripcionOperador;
+            this.DescripcionOperador = descripcionOperador;
         }
 
         public String getDescripcionOperador()
         {
-            return this.descripcionOperador;
+            return this.DescripcionOperador;
         }
 
         public void setDetalleAccionRequerida(string detalleAccionRequerida)
         {
-            this.detalleAccionRequerida = detalleAccionRequerida;
+            this.DetalleAccionRequerida = detalleAccionRequerida;
         }
 
         public String getDetalleAccionRequerida()
         {
-            return this.detalleAccionRequerida;
+            return this.DetalleAccionRequerida;
         }
         public void setDuracion(TimeSpan duracion)
         {
-            this.duracion = duracion;
+            this.Duracion = duracion;
         }
 
         public TimeSpan getDuracion()
         {
-            return this.duracion;
+            return this.Duracion;
         }
         public void setEncuestaEnviada(bool encuestaEnviada)
         {
-            this.encuestaEnviada = encuestaEnviada;
+            this.EncuestaEnviada = encuestaEnviada;
         }
         public bool getEncuestaEnviada()
         {
-            return this.encuestaEnviada;
+            return this.EncuestaEnviada;
         }
         public void setObservacionAuditor(string observacionAuditor)
         {
-            this.observacionAuditor = observacionAuditor;
+            this.ObservacionAuditor = observacionAuditor;
         }
 
         public String getObservacionAuditor()
         {
-            return this.observacionAuditor;
+            return this.ObservacionAuditor;
         }
 
         // Métodos
         public void tomadaPorOperador(string fechaHoraActual)
         {
             DateTime fechaFormateada = DateTime.Parse(fechaHoraActual);
-            this.estado.tomadaPorOperador(fechaFormateada, this, cambiosDeEstado);
+            this.Estado.tomadaPorOperador(fechaFormateada, this, CambiosDeEstado);
         }
 
         public string getCliente()
         {
-            string nom = cliente.getNombreClienteLlamada();
+            string nom = Cliente.getNombreClienteLlamada();
             return nom;
         }
 
         public string buscarInfoCorrecta(Llamada llamada, string validacion)
         {
-            string correcta = llamada.cliente.buscarInfoCorrecta(llamada, validacion);
+            string correcta = llamada.Cliente.buscarInfoCorrecta(llamada, validacion);
             return correcta;
         }
 
         public bool validarInformacionCliente(string info, string validacion, Llamada llamada)
         {
             
-            bool bandera = llamada.cliente.esInformacionCorrecta(info, validacion, llamada);
+            bool bandera = llamada.Cliente.esInformacionCorrecta(info, validacion, llamada);
             return bandera;
         }
         
@@ -145,13 +145,13 @@ namespace PPAI_Entrega3.Entidades
         {
             DateTime Inicio = DateTime.Parse(fechaHoraEnCurso);
             DateTime Fin = DateTime.Parse(fechaHoraFinalizada);
-            this.duracion = Fin - Inicio;
+            this.Duracion = Fin - Inicio;
         }
         public void finalizar(string fechaHoraActual, string respuesta)
         {
-            this.descripcionOperador = respuesta;
+            this.DescripcionOperador = respuesta;
             DateTime fechaFormateada = DateTime.Parse(fechaHoraActual);
-            this.estado.finalizar(fechaFormateada, this, cambiosDeEstado);
+            this.Estado.finalizar(fechaFormateada, this, CambiosDeEstado);
         }
     }
 

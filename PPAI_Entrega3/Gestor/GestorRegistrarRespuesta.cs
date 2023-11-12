@@ -78,7 +78,7 @@ namespace PPAI_Entrega3.Gestor
             datosLlamada.Add(nombreCliente);
             ;
 
-            ((int, string), string) tupla = categoria.getDescripcionCategoriaYOpcion(llamada.opcionLlamada, llamada.subOpcionLlamada);
+            ((int, string), string) tupla = categoria.getDescripcionCategoriaYOpcion(llamada.OpcionLlamada, llamada.SubOpcionLlamada);
 
             string nombreCate = tupla.Item1.Item2; // Mostrar
             datosLlamada.Add(nombreCate);
@@ -88,7 +88,7 @@ namespace PPAI_Entrega3.Gestor
             datosLlamada.Add(nroOrden.ToString());
 
 
-            List<string> mensajes = categoria.getValidaciones(llamada.opcionLlamada, llamada.subOpcionLlamada, llamada.subOpcionLlamada.validaciones); // Mostrar
+            List<string> mensajes = categoria.getValidaciones(llamada.OpcionLlamada, llamada.SubOpcionLlamada, llamada.SubOpcionLlamada.Validaciones); // Mostrar
 
             foreach (string mensaje in mensajes) datosLlamada.Add(mensaje);
 
@@ -97,7 +97,7 @@ namespace PPAI_Entrega3.Gestor
 
             foreach (string mensaje in mensajes)
             {
-                this.opValidacion = llamada.cliente.buscarInfoCorrecta(llamada, mensaje);
+                this.opValidacion = llamada.Cliente.buscarInfoCorrecta(llamada, mensaje);
                 datosLlamada.Add(opValidacion);
             }
         }

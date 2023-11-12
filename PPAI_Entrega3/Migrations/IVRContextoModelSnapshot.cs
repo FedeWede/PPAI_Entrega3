@@ -19,85 +19,82 @@ namespace PPAI_Entrega3.Migrations
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.CambioEstado", b =>
                 {
-                    b.Property<int>("idCambioEstado")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("LlamadaidLlamada")
+                    b.Property<int>("EstadoId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("estadoidEstado")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("fechaHoraInicio")
+                    b.Property<DateTime?>("FechaHoraFin")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("idCambioEstado");
+                    b.Property<DateTime>("FechaHoraInicio")
+                        .HasColumnType("TEXT");
 
-                    b.HasIndex("LlamadaidLlamada");
+                    b.Property<int?>("LlamadaId")
+                        .HasColumnType("INTEGER");
 
-                    b.HasIndex("estadoidEstado");
+                    b.HasKey("Id");
+
+                    b.HasIndex("EstadoId");
+
+                    b.HasIndex("LlamadaId");
 
                     b.ToTable("CambioEstado");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.Categoria", b =>
                 {
-                    b.Property<int>("idCategoria")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("audioMensajeOpciones")
+                    b.Property<string>("AudioMensajeOpciones")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("mensajeOpciones")
+                    b.Property<string>("MensajeOpciones")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("nombre")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("nroOrden")
+                    b.Property<int>("NroOrden")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("opcionLlamadaidOpcionLlamada")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("idCategoria");
-
-                    b.HasIndex("opcionLlamadaidOpcionLlamada");
+                    b.HasKey("Id");
 
                     b.ToTable("Categoria");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.Cliente", b =>
                 {
-                    b.Property<int>("IdCliente")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("dni")
+                    b.Property<string>("Dni")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("nombreCompleto")
+                    b.Property<string>("NombreCompleto")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("numeroCelular")
-                        .IsRequired()
+                    b.Property<string>("NumeroCelular")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("IdCliente");
+                    b.HasKey("Id");
 
                     b.ToTable("Cliente");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.Estado", b =>
                 {
-                    b.Property<int>("idEstado")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -105,11 +102,11 @@ namespace PPAI_Entrega3.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("nombre")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("idEstado");
+                    b.HasKey("Id");
 
                     b.ToTable("Estado");
 
@@ -120,194 +117,189 @@ namespace PPAI_Entrega3.Migrations
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.InformacionCliente", b =>
                 {
-                    b.Property<int>("idInformacionCliente")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ClienteIdCliente")
+                    b.Property<int?>("ClienteId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("datoAValidar")
+                    b.Property<string>("DatoAValidar")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("tipoInformacionidTipoInformacion")
+                    b.Property<int>("TipoInformacionId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("validacionidValidacion")
+                    b.Property<int>("ValidacionId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("idInformacionCliente");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ClienteIdCliente");
+                    b.HasIndex("ClienteId");
 
-                    b.HasIndex("tipoInformacionidTipoInformacion");
+                    b.HasIndex("TipoInformacionId");
 
-                    b.HasIndex("validacionidValidacion");
+                    b.HasIndex("ValidacionId");
 
                     b.ToTable("InformacionCliente");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.Llamada", b =>
                 {
-                    b.Property<int>("idLlamada")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("clienteIdCliente")
+                    b.Property<int>("ClienteId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("descripcionOperador")
+                    b.Property<string>("DescripcionOperador")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("detalleAccionRequerida")
+                    b.Property<string>("DetalleAccionRequerida")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<TimeSpan>("duracion")
+                    b.Property<TimeSpan>("Duracion")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("encuestaEnviada")
+                    b.Property<bool>("EncuestaEnviada")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("estadoidEstado")
+                    b.Property<int>("EstadoId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("observacionAuditor")
+                    b.Property<string>("ObservacionAuditor")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("opcionLlamadaidOpcionLlamada")
+                    b.Property<int?>("OpcionLlamadaId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("subOpcionLlamadaidSubOpcionLLamada")
+                    b.Property<int>("SubOpcionLlamadaId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("idLlamada");
+                    b.HasKey("Id");
 
-                    b.HasIndex("clienteIdCliente");
+                    b.HasIndex("ClienteId");
 
-                    b.HasIndex("estadoidEstado");
+                    b.HasIndex("EstadoId");
 
-                    b.HasIndex("opcionLlamadaidOpcionLlamada");
+                    b.HasIndex("OpcionLlamadaId");
 
-                    b.HasIndex("subOpcionLlamadaidSubOpcionLLamada");
+                    b.HasIndex("SubOpcionLlamadaId");
 
                     b.ToTable("Llamada");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.OpcionLlamada", b =>
                 {
-                    b.Property<int>("idOpcionLlamada")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CategoriaidCategoria")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("audioMensajeSubOpciones")
+                    b.Property<string>("AudioMensajeSubOpciones")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("mensajeSubOpciones")
+                    b.Property<int?>("CategoriaId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("MensajeSubOpciones")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("nombre")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("nroOrden")
+                    b.Property<int>("NroOrden")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("subOpcionLlamadaidSubOpcionLLamada")
-                        .HasColumnType("INTEGER");
+                    b.HasKey("Id");
 
-                    b.HasKey("idOpcionLlamada");
-
-                    b.HasIndex("CategoriaidCategoria");
-
-                    b.HasIndex("subOpcionLlamadaidSubOpcionLLamada");
+                    b.HasIndex("CategoriaId");
 
                     b.ToTable("opcionLlamada");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.SubOpcionLlamada", b =>
                 {
-                    b.Property<int>("idSubOpcionLLamada")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("OpcionLlamadaidOpcionLlamada")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("nombre")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("nroOrden")
+                    b.Property<int>("NroOrden")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("idSubOpcionLLamada");
+                    b.Property<int?>("OpcionLlamadaId")
+                        .HasColumnType("INTEGER");
 
-                    b.HasIndex("OpcionLlamadaidOpcionLlamada");
+                    b.HasKey("Id");
+
+                    b.HasIndex("OpcionLlamadaId");
 
                     b.ToTable("SubOpcionLlamada");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.TipoInformacion", b =>
                 {
-                    b.Property<int>("idTipoInformacion")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("descripcion")
+                    b.Property<string>("Descripcion")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("nombre")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("idTipoInformacion");
+                    b.HasKey("Id");
 
                     b.ToTable("TipoInformacion");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.Validacion", b =>
                 {
-                    b.Property<int>("idValidacion")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("OpcionLlamadaidOpcionLlamada")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("SubOpcionLlamadaidSubOpcionLLamada")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("audioMensajeValidacion")
+                    b.Property<string>("AudioMensajeValidacion")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("nombre")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("nroOrden")
+                    b.Property<int>("NroOrden")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("tipoInformacionidTipoInformacion")
+                    b.Property<int?>("OpcionLlamadaId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("idValidacion");
+                    b.Property<int?>("SubOpcionLlamadaId")
+                        .HasColumnType("INTEGER");
 
-                    b.HasIndex("OpcionLlamadaidOpcionLlamada");
+                    b.Property<int>("TipoInformacionId")
+                        .HasColumnType("INTEGER");
 
-                    b.HasIndex("SubOpcionLlamadaidSubOpcionLLamada");
+                    b.HasKey("Id");
 
-                    b.HasIndex("tipoInformacionidTipoInformacion");
+                    b.HasIndex("OpcionLlamadaId");
+
+                    b.HasIndex("SubOpcionLlamadaId");
+
+                    b.HasIndex("TipoInformacionId");
 
                     b.ToTable("Validacion");
                 });
@@ -337,163 +329,138 @@ namespace PPAI_Entrega3.Migrations
                 {
                     b.HasBaseType("PPAI_Entrega3.Entidades.Estado");
 
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.HasDiscriminator().HasValue("Iniciada");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.CambioEstado", b =>
                 {
+                    b.HasOne("PPAI_Entrega3.Entidades.Estado", "Estado")
+                        .WithMany()
+                        .HasForeignKey("EstadoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PPAI_Entrega3.Entidades.Llamada", null)
-                        .WithMany("cambiosDeEstado")
-                        .HasForeignKey("LlamadaidLlamada");
+                        .WithMany("CambiosDeEstado")
+                        .HasForeignKey("LlamadaId");
 
-                    b.HasOne("PPAI_Entrega3.Entidades.Estado", "estado")
-                        .WithMany()
-                        .HasForeignKey("estadoidEstado")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("estado");
-                });
-
-            modelBuilder.Entity("PPAI_Entrega3.Entidades.Categoria", b =>
-                {
-                    b.HasOne("PPAI_Entrega3.Entidades.OpcionLlamada", "opcionLlamada")
-                        .WithMany()
-                        .HasForeignKey("opcionLlamadaidOpcionLlamada")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("opcionLlamada");
+                    b.Navigation("Estado");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.InformacionCliente", b =>
                 {
                     b.HasOne("PPAI_Entrega3.Entidades.Cliente", null)
-                        .WithMany("informacionCliente")
-                        .HasForeignKey("ClienteIdCliente");
+                        .WithMany("InformacionCliente")
+                        .HasForeignKey("ClienteId");
 
-                    b.HasOne("PPAI_Entrega3.Entidades.TipoInformacion", "tipoInformacion")
+                    b.HasOne("PPAI_Entrega3.Entidades.TipoInformacion", "TipoInformacion")
                         .WithMany()
-                        .HasForeignKey("tipoInformacionidTipoInformacion")
+                        .HasForeignKey("TipoInformacionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PPAI_Entrega3.Entidades.Validacion", "validacion")
+                    b.HasOne("PPAI_Entrega3.Entidades.Validacion", "Validacion")
                         .WithMany()
-                        .HasForeignKey("validacionidValidacion")
+                        .HasForeignKey("ValidacionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("tipoInformacion");
+                    b.Navigation("TipoInformacion");
 
-                    b.Navigation("validacion");
+                    b.Navigation("Validacion");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.Llamada", b =>
                 {
-                    b.HasOne("PPAI_Entrega3.Entidades.Cliente", "cliente")
+                    b.HasOne("PPAI_Entrega3.Entidades.Cliente", "Cliente")
                         .WithMany()
-                        .HasForeignKey("clienteIdCliente")
+                        .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PPAI_Entrega3.Entidades.Estado", "estado")
+                    b.HasOne("PPAI_Entrega3.Entidades.Estado", "Estado")
                         .WithMany()
-                        .HasForeignKey("estadoidEstado")
+                        .HasForeignKey("EstadoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PPAI_Entrega3.Entidades.OpcionLlamada", "opcionLlamada")
+                    b.HasOne("PPAI_Entrega3.Entidades.OpcionLlamada", "OpcionLlamada")
                         .WithMany()
-                        .HasForeignKey("opcionLlamadaidOpcionLlamada")
+                        .HasForeignKey("OpcionLlamadaId");
+
+                    b.HasOne("PPAI_Entrega3.Entidades.SubOpcionLlamada", "SubOpcionLlamada")
+                        .WithMany()
+                        .HasForeignKey("SubOpcionLlamadaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PPAI_Entrega3.Entidades.SubOpcionLlamada", "subOpcionLlamada")
-                        .WithMany()
-                        .HasForeignKey("subOpcionLlamadaidSubOpcionLLamada")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Cliente");
 
-                    b.Navigation("cliente");
+                    b.Navigation("Estado");
 
-                    b.Navigation("estado");
+                    b.Navigation("OpcionLlamada");
 
-                    b.Navigation("opcionLlamada");
-
-                    b.Navigation("subOpcionLlamada");
+                    b.Navigation("SubOpcionLlamada");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.OpcionLlamada", b =>
                 {
                     b.HasOne("PPAI_Entrega3.Entidades.Categoria", null)
-                        .WithMany("opciones")
-                        .HasForeignKey("CategoriaidCategoria");
-
-                    b.HasOne("PPAI_Entrega3.Entidades.SubOpcionLlamada", "subOpcionLlamada")
-                        .WithMany()
-                        .HasForeignKey("subOpcionLlamadaidSubOpcionLLamada")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("subOpcionLlamada");
+                        .WithMany("Opciones")
+                        .HasForeignKey("CategoriaId");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.SubOpcionLlamada", b =>
                 {
                     b.HasOne("PPAI_Entrega3.Entidades.OpcionLlamada", null)
-                        .WithMany("subOpciones")
-                        .HasForeignKey("OpcionLlamadaidOpcionLlamada");
+                        .WithMany("SubOpciones")
+                        .HasForeignKey("OpcionLlamadaId");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.Validacion", b =>
                 {
                     b.HasOne("PPAI_Entrega3.Entidades.OpcionLlamada", null)
-                        .WithMany("validacion")
-                        .HasForeignKey("OpcionLlamadaidOpcionLlamada");
+                        .WithMany("Validacion")
+                        .HasForeignKey("OpcionLlamadaId");
 
                     b.HasOne("PPAI_Entrega3.Entidades.SubOpcionLlamada", null)
-                        .WithMany("validaciones")
-                        .HasForeignKey("SubOpcionLlamadaidSubOpcionLLamada");
+                        .WithMany("Validaciones")
+                        .HasForeignKey("SubOpcionLlamadaId");
 
-                    b.HasOne("PPAI_Entrega3.Entidades.TipoInformacion", "tipoInformacion")
+                    b.HasOne("PPAI_Entrega3.Entidades.TipoInformacion", "TipoInformacion")
                         .WithMany()
-                        .HasForeignKey("tipoInformacionidTipoInformacion")
+                        .HasForeignKey("TipoInformacionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("tipoInformacion");
+                    b.Navigation("TipoInformacion");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.Categoria", b =>
                 {
-                    b.Navigation("opciones");
+                    b.Navigation("Opciones");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.Cliente", b =>
                 {
-                    b.Navigation("informacionCliente");
+                    b.Navigation("InformacionCliente");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.Llamada", b =>
                 {
-                    b.Navigation("cambiosDeEstado");
+                    b.Navigation("CambiosDeEstado");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.OpcionLlamada", b =>
                 {
-                    b.Navigation("subOpciones");
+                    b.Navigation("SubOpciones");
 
-                    b.Navigation("validacion");
+                    b.Navigation("Validacion");
                 });
 
             modelBuilder.Entity("PPAI_Entrega3.Entidades.SubOpcionLlamada", b =>
                 {
-                    b.Navigation("validaciones");
+                    b.Navigation("Validaciones");
                 });
 #pragma warning restore 612, 618
         }
