@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PPAI_Entrega3.Servicios;
+using PPAI_Entrega3.Persistencia;
 
 namespace PPAI_Entrega3.Gestor
 {
@@ -31,6 +32,10 @@ namespace PPAI_Entrega3.Gestor
         // Instanciamos los objetos a forma de simulación:
         public (Llamada, Categoria) opcionNuevaRespuestaOperador()
         {    
+
+            using IVRContexto contexto = new IVRContexto();
+
+
             TipoInformacion tipoInfoCantHijos = new TipoInformacion("Cantidad de Hijos:", "Es la cantidad de hijos del cliente");
 
             TipoInformacion tipoInfoFechaNac = new TipoInformacion("Fecha de Nacimiento:", "Es la fecha de nacimiento del cliente");
@@ -72,6 +77,7 @@ namespace PPAI_Entrega3.Gestor
                     "Informar robo", 1, listaOpciones);
 
             Cliente cliente = new Cliente("23097372", "Juan Pérez", "9q9999", informacionClientes);
+            cliente.IdCliente = 1;
 
             Iniciada estado = new Iniciada("Iniciada");
 
@@ -83,7 +89,8 @@ namespace PPAI_Entrega3.Gestor
             Llamada llamada = new Llamada("Sin descripción", "Sin acción req", TimeSpan.Zero, false, "Sin observación",
                      cliente, subOpcion, opcionLlamada1, historialEstados, estado);
 
-            
+            contexto.Add(cliente);
+            contexto.SaveChanges();
 
             // Llamar a los métodos del formulario para mostrar los datos
             interfaz.MostrarDNI(cliente.dni);

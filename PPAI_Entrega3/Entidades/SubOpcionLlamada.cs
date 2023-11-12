@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,11 +11,13 @@ namespace PPAI_Entrega3.Entidades
     public class SubOpcionLlamada
     {
         // Atributos
+        [Key]
+        public int idSubOpcionLLamada { get; set; }
         public string nombre { get; set; }
         public int nroOrden { get; set; }
 
         // Relación
-        public List<Validacion> validaciones { get; set; }
+        public virtual ICollection<Validacion> validaciones { get; set; }
 
         // Constructor
         public SubOpcionLlamada(string nombre, int nroOrden, List<Validacion> validaciones)
@@ -25,6 +29,8 @@ namespace PPAI_Entrega3.Entidades
             // Inicializar relación
             this.validaciones = validaciones;
         }
+
+        public SubOpcionLlamada() { }
         //Metodos de Seteo
 
         public void setNombre(string nombre)

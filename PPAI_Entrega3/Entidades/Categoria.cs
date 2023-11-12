@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,14 +11,16 @@ namespace PPAI_Entrega3.Entidades
     public class Categoria
     {
         // Atributos
+        [Key]
+        public int idCategoria { get; set; }
         public string audioMensajeOpciones { get; set; }
         public string mensajeOpciones { get; set; }
         public string nombre { get; set; }
         public int nroOrden { get; set; }
 
         // Relación de agregación
-        public List<OpcionLlamada> opciones { get; set; }
-        public OpcionLlamada opcionLlamada { get; set; }
+        public virtual ICollection<OpcionLlamada> opciones { get; set; }
+        public virtual OpcionLlamada opcionLlamada { get; set; }
 
         // Constructor
         public Categoria(string audioMensajeOpciones, string mensajeOpciones, string nombre, int nroOrden, List<OpcionLlamada> opciones)
@@ -30,6 +34,8 @@ namespace PPAI_Entrega3.Entidades
             // Inicializar relación
             this.opciones = opciones;
         }
+
+        public Categoria() { }
 
         //Metodos de Seteo
 
@@ -85,6 +91,11 @@ namespace PPAI_Entrega3.Entidades
             var datos2 = (datos, nombreCat);
             
             return datos2;
+        }
+
+        internal List<string> getValidaciones(OpcionLlamada opcionLlamada, SubOpcionLlamada subOpcionLlamada, ICollection<Validacion> validaciones)
+        {
+            throw new NotImplementedException();
         }
     }
 }

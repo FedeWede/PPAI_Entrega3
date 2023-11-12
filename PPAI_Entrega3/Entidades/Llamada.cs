@@ -16,22 +16,19 @@ namespace PPAI_Entrega3.Entidades
     {
         // Atributos
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int idLlamada {  get; set; }
         public string descripcionOperador { get; set; }
         public string detalleAccionRequerida { get; set; }
         public TimeSpan duracion { get; set; }
         public bool encuestaEnviada { get; set; }
         public string observacionAuditor { get; set; }
-        [ForeignKey("cliente")]
-        public int idCliente { get; set; }
 
         // Relaciones
         public virtual Cliente cliente { get; set; }
-        public SubOpcionLlamada subOpcionLlamada { get; set; }
-        public OpcionLlamada opcionLlamada { get; set; }
-        public List<CambioEstado> cambioDeEstado { get; set; }
-        public Estado estado { get; set; }
+        public virtual SubOpcionLlamada subOpcionLlamada { get; set; }
+        public virtual OpcionLlamada opcionLlamada { get; set; }
+        public virtual ICollection<CambioEstado> cambiosDeEstado { get; set; }
+        public virtual Estado estado { get; set; }
 
         // estado
 
@@ -52,14 +49,17 @@ namespace PPAI_Entrega3.Entidades
             this.cliente = cliente;
             this.subOpcionLlamada = subOpcionLlamada;
             this.opcionLlamada = opcionLlamada;
-            this.cambioDeEstado = cambioDeEstado; // Cambiado por el new
+            this.cambiosDeEstado = cambioDeEstado; // Cambiado por el new
             this.estado = estado;
         }
+
+        public Llamada() { }
+
         //Metodos de Seteo
 
         public void setCambioEstado(CambioEstado estado)
         {
-            this.cambioDeEstado.Add(estado);
+            this.cambiosDeEstado.Add(estado);
         }
 
         public void setEstadoLlamada(Estado estado)

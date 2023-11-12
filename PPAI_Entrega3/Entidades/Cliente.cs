@@ -13,7 +13,6 @@ namespace PPAI_Entrega3.Entidades
     {
         // Atributos
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdCliente { get; set; }
         public string dni { get; set; }
         public string nombreCompleto { get; set; }
@@ -21,7 +20,7 @@ namespace PPAI_Entrega3.Entidades
 
 
         // Relación
-        public List<InformacionCliente> informacionCliente { get; set; }
+        public virtual ICollection<InformacionCliente> informacionCliente { get; set; }
 
         // Constructor
         public Cliente(string dni, string nombreCompleto, string numeroCelular, List<InformacionCliente> informacionCliente)
@@ -34,6 +33,8 @@ namespace PPAI_Entrega3.Entidades
             // Inicializar relación
             this.informacionCliente = informacionCliente; // Cambiado por el new
         }
+
+        public Cliente() { }
 
         //Metodos de Seteo
         public void setDni(string dni)

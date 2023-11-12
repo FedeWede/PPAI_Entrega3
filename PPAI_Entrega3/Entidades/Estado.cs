@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +11,8 @@ namespace PPAI_Entrega3.Entidades
     public abstract class Estado
     {
         // Atributos
+        [Key]
+        public int idEstado { get; set;  }
         public string nombre { get; set; }
 
         // Constructor

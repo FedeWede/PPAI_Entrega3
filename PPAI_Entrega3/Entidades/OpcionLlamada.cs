@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,15 +11,17 @@ namespace PPAI_Entrega3.Entidades
     public class OpcionLlamada
     {
         // Atributos
+        [Key]
+        public int idOpcionLlamada { get; set; }
         public string audioMensajeSubOpciones { get; set; }
         public string mensajeSubOpciones { get; set; }
         public string nombre { get; set; }
         public int nroOrden { get; set; }
 
         // Relación de agregación
-        public List<SubOpcionLlamada> subOpciones { get; set; }
-        public List<Validacion> validacion { get; set; }
-        public SubOpcionLlamada subOpcionLlamada { get; set; }
+        public virtual ICollection<SubOpcionLlamada> subOpciones { get; set; }
+        public virtual ICollection<Validacion> validacion { get; set; }
+        public virtual SubOpcionLlamada subOpcionLlamada { get; set; }
 
         // Constructor
         public OpcionLlamada(string audioMensajeSubOpciones, string mensajeSubOpciones, string nombre, int nroOrden,
@@ -33,6 +37,9 @@ namespace PPAI_Entrega3.Entidades
             this.subOpciones = new List<SubOpcionLlamada>();
             this.validacion = new List<Validacion>();
         }
+
+        public OpcionLlamada() { }
+
 
         //Metodos de Seteo
 
