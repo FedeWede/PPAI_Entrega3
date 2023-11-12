@@ -27,7 +27,7 @@ namespace PPAI_Entrega3.Entidades
         public virtual Cliente cliente { get; set; }
         public virtual SubOpcionLlamada subOpcionLlamada { get; set; }
         public virtual OpcionLlamada opcionLlamada { get; set; }
-        public virtual ICollection<CambioEstado> cambiosDeEstado { get; set; }
+        public virtual List<CambioEstado> cambiosDeEstado { get; set; }
         public virtual Estado estado { get; set; }
 
         // estado

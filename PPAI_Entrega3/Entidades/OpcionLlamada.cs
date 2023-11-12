@@ -19,8 +19,8 @@ namespace PPAI_Entrega3.Entidades
         public int nroOrden { get; set; }
 
         // Relación de agregación
-        public virtual ICollection<SubOpcionLlamada> subOpciones { get; set; }
-        public virtual ICollection<Validacion> validacion { get; set; }
+        public virtual List<SubOpcionLlamada> subOpciones { get; set; }
+        public virtual List<Validacion> validacion { get; set; }
         public virtual SubOpcionLlamada subOpcionLlamada { get; set; }
 
         // Constructor

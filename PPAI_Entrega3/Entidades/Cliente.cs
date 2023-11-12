@@ -20,7 +20,7 @@ namespace PPAI_Entrega3.Entidades
 
 
         // Relación
-        public virtual ICollection<InformacionCliente> informacionCliente { get; set; }
+        public virtual List<InformacionCliente> informacionCliente { get; set; }
 
         // Constructor
         public Cliente(string dni, string nombreCompleto, string numeroCelular, List<InformacionCliente> informacionCliente)

@@ -19,7 +19,7 @@ namespace PPAI_Entrega3.Entidades
         public int nroOrden { get; set; }
 
         // Relación de agregación
-        public virtual ICollection<OpcionLlamada> opciones { get; set; }
+        public virtual List<OpcionLlamada> opciones { get; set; }
         public virtual OpcionLlamada opcionLlamada { get; set; }
 
         // Constructor
@@ -85,17 +85,12 @@ namespace PPAI_Entrega3.Entidades
         }
 
         public ((int, string), string) getDescripcionCategoriaYOpcion(OpcionLlamada opcionLlamada, SubOpcionLlamada subOpcionLlamada)
-        {   
+        {
             (int, string) datos = opcionLlamada.getDescripcion(subOpcionLlamada);
             string nombreCat = this.getNombre();
             var datos2 = (datos, nombreCat);
-            
-            return datos2;
-        }
 
-        internal List<string> getValidaciones(OpcionLlamada opcionLlamada, SubOpcionLlamada subOpcionLlamada, ICollection<Validacion> validaciones)
-        {
-            throw new NotImplementedException();
+            return datos2;
         }
     }
 }
