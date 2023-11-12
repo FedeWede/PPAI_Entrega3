@@ -1,24 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "E:\\PPAI Entrega 2\\PPAI_Entrega3\\PPAI_Entrega3\\PPAI_Entrega3\\PPAI_Entrega3.csproj": {}
+    "B:\\UTN\\Tercer_año\\Diseño de sistemas de información\\PPAI\\TerceraEntrega\\PPAI_TerceraEntrega\\PPAI_Entrega3\\PPAI_Entrega3\\PPAI_Entrega3.csproj": {}
   },
   "projects": {
-    "E:\\PPAI Entrega 2\\PPAI_Entrega3\\PPAI_Entrega3\\PPAI_Entrega3\\PPAI_Entrega3.csproj": {
+    "B:\\UTN\\Tercer_año\\Diseño de sistemas de información\\PPAI\\TerceraEntrega\\PPAI_TerceraEntrega\\PPAI_Entrega3\\PPAI_Entrega3\\PPAI_Entrega3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\PPAI Entrega 2\\PPAI_Entrega3\\PPAI_Entrega3\\PPAI_Entrega3\\PPAI_Entrega3.csproj",
+        "projectUniqueName": "B:\\UTN\\Tercer_año\\Diseño de sistemas de información\\PPAI\\TerceraEntrega\\PPAI_TerceraEntrega\\PPAI_Entrega3\\PPAI_Entrega3\\PPAI_Entrega3.csproj",
         "projectName": "PPAI_Entrega3",
-        "projectPath": "E:\\PPAI Entrega 2\\PPAI_Entrega3\\PPAI_Entrega3\\PPAI_Entrega3\\PPAI_Entrega3.csproj",
-        "packagesPath": "C:\\Users\\fedew\\.nuget\\packages\\",
-        "outputPath": "E:\\PPAI Entrega 2\\PPAI_Entrega3\\PPAI_Entrega3\\PPAI_Entrega3\\obj\\",
+        "projectPath": "B:\\UTN\\Tercer_año\\Diseño de sistemas de información\\PPAI\\TerceraEntrega\\PPAI_TerceraEntrega\\PPAI_Entrega3\\PPAI_Entrega3\\PPAI_Entrega3.csproj",
+        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
+        "outputPath": "B:\\UTN\\Tercer_año\\Diseño de sistemas de información\\PPAI\\TerceraEntrega\\PPAI_TerceraEntrega\\PPAI_Entrega3\\PPAI_Entrega3\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\fedew\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows"
+          "net6.0-windows7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -67,8 +71,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -80,7 +83,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -14,6 +14,7 @@ namespace PPAI_Entrega3.Entidades
         [Key]
         public int idCambioEstado { get; set; }
         public DateTime fechaHoraInicio { get; set; }
+        public DateTime? fechaHoraFin { get; set; }
         // Relación
         public virtual Estado estado { get; set; }
 
@@ -24,6 +25,7 @@ namespace PPAI_Entrega3.Entidades
             this.fechaHoraInicio = fechaHoraInicio;
             // Inicializar relación
             this.estado = estado;
+            this.fechaHoraFin = null;
         }
 
         public CambioEstado()
@@ -43,6 +45,12 @@ namespace PPAI_Entrega3.Entidades
             return fechaHoraInicio;
         }
 
+        public void setFechaHoraFin(DateTime fechaHoraFin)
+        {
+            
+            this.fechaHoraFin = fechaHoraFin;
+        }
+
         public string getNombreEstado()
         {
             // Implementación del método
@@ -54,6 +62,11 @@ namespace PPAI_Entrega3.Entidades
             {
                 return string.Empty;
             }
+        }
+
+        public Boolean esEstadoActual()
+        {
+            return fechaHoraFin == null;
         }
     }
 }

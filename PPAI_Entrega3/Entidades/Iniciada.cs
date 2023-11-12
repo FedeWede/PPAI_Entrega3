@@ -19,8 +19,10 @@ namespace PPAI_Entrega3.Entidades
         public string Nombre { get; set; }
 
 
-        public override void tomadaPorOperador(DateTime fechaHoraActual, Llamada llamada)
+        public override void tomadaPorOperador(DateTime fechaHoraActual, Llamada llamada, List<CambioEstado> cambiosEstado)
         {
+            CambioEstado ce = buscarUltimoEstado(cambiosEstado);
+            ce.setFechaHoraFin(fechaHoraActual);
 
             Estado nuevoEstado = crearProximoEstado();
             CambioEstado nuevoCambioEstado = crearCambioEstado(fechaHoraActual, nuevoEstado);
@@ -46,5 +48,7 @@ namespace PPAI_Entrega3.Entidades
             return nuevoCambioEstado;
 
         }
+
+        
     }
 }

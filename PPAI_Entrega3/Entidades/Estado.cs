@@ -37,10 +37,10 @@ namespace PPAI_Entrega3.Entidades
             return this.nombre;
         }
 
-        public virtual void tomadaPorOperador(DateTime fechaHoraActual, Llamada llamada) { }
+        public virtual void tomadaPorOperador(DateTime fechaHoraActual, Llamada llamada, List<CambioEstado> cambioestado) { }
 
 
-        public virtual void finalizar(DateTime fechaHoraActual, Llamada llamada) { }
+        public virtual void finalizar(DateTime fechaHoraActual, Llamada llamada, List<CambioEstado> cambioestado) { }
 
 
         public abstract Estado crearProximoEstado();
@@ -52,6 +52,17 @@ namespace PPAI_Entrega3.Entidades
 
 
         // Métodos
+        public CambioEstado buscarUltimoEstado(List<CambioEstado> cambiosEstado)
+        {
+            foreach (CambioEstado ce in cambiosEstado)
+            {
+                if (ce.esEstadoActual())
+                {
+                    return ce;
+                }
+            }
+            return null;
+        }
         /*
         public static Estado esEnCurso()
         {

@@ -119,7 +119,7 @@ namespace PPAI_Entrega3.Entidades
         public void tomadaPorOperador(string fechaHoraActual)
         {
             DateTime fechaFormateada = DateTime.Parse(fechaHoraActual);
-            this.estado.tomadaPorOperador(fechaFormateada, this);
+            this.estado.tomadaPorOperador(fechaFormateada, this, cambiosDeEstado);
         }
 
         public string getCliente()
@@ -151,7 +151,7 @@ namespace PPAI_Entrega3.Entidades
         {
             this.descripcionOperador = respuesta;
             DateTime fechaFormateada = DateTime.Parse(fechaHoraActual);
-            this.estado.finalizar(fechaFormateada, this);
+            this.estado.finalizar(fechaFormateada, this, cambiosDeEstado);
         }
     }
 
