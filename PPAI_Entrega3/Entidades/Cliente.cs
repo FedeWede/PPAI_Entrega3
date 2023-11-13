@@ -80,15 +80,9 @@ namespace PPAI_Entrega3.Entidades
                         bandera = true;
                         break;
                     }
-                    else
-                    {
-                        
-                    }
+
                 }
-                else
-                {
-                    
-                }
+
             }
             return bandera;
         }

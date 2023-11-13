@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PPAI_Entrega3.Servicios;
 using PPAI_Entrega3.Persistencia;
+using Microsoft.EntityFrameworkCore;
 
 namespace PPAI_Entrega3.Gestor
 {
@@ -41,8 +42,8 @@ namespace PPAI_Entrega3.Gestor
             TipoInformacion tipoInfoCodPostal = new TipoInformacion("Codigo postal", "Es el codigo postal del cliente");
 
 
-            context.TipoInformacion.AddRange(tipoInfoCantHijos, tipoInfoFechaNac, tipoInfoCodPostal);
-            context.SaveChanges();
+            //context.TipoInformacion.AddRange(tipoInfoCantHijos, tipoInfoFechaNac, tipoInfoCodPostal);
+            //context.SaveChanges();
 
             Validacion validacion1 = new Validacion() { AudioMensajeValidacion = "Audio", Nombre = "Cantidad de hijos: ", NroOrden = 1, TipoInformacion = tipoInfoCantHijos };
 
@@ -50,13 +51,12 @@ namespace PPAI_Entrega3.Gestor
 
             Validacion validacion3 = new Validacion("Audio", "Código postal", 1, tipoInfoCodPostal);
 
-            context.Validacion.AddRange(validacion1, validacion2, validacion3);
-            context.SaveChanges();
+            //context.Validacion.AddRange(validacion1, validacion2, validacion3);
+            //context.SaveChanges();
 
             List<Validacion> validaciones = new List<Validacion>();
             validaciones.Add(validacion1);
             validaciones.Add(validacion2);
-            validaciones.Add(validacion3);
 
 
             List<InformacionCliente> informacionClientes = new List<InformacionCliente>();
@@ -70,8 +70,8 @@ namespace PPAI_Entrega3.Gestor
             InformacionCliente infoClienteCodPostal = new InformacionCliente() { DatoAValidar = "5000", Validacion = validacion3, TipoInformacion = tipoInfoCodPostal };
             informacionClientes.Add(infoClienteCodPostal);
 
-            context.InformacionCliente.AddRange(infoClienteCantHijos, infoClienteFechaNac, infoClienteCodPostal);
-            context.SaveChanges();
+            //context.InformacionCliente.AddRange(infoClienteCantHijos, infoClienteFechaNac, infoClienteCodPostal);
+            //context.SaveChanges();
 
             SubOpcionLlamada subOpcion = new SubOpcionLlamada("Hablar con operador", 1, validaciones);
             List<SubOpcionLlamada> listaSubOpciones = new List<SubOpcionLlamada>();
@@ -80,8 +80,8 @@ namespace PPAI_Entrega3.Gestor
             SubOpcionLlamada subOpcion2 = new SubOpcionLlamada("Volver atras", 2, null);
             listaSubOpciones.Add(subOpcion2);
 
-            context.SubOpcionLlamada.AddRange(subOpcion, subOpcion2);
-            context.SaveChanges();
+            //context.SubOpcionLlamada.AddRange(subOpcion, subOpcion2);
+            //context.SaveChanges();
 
             OpcionLlamada opcionLlamada1 = new OpcionLlamada()
             {
@@ -95,8 +95,8 @@ namespace PPAI_Entrega3.Gestor
             List<OpcionLlamada> listaOpciones = new List<OpcionLlamada>();
             listaOpciones.Add(opcionLlamada1);
 
-            context.opcionLlamada.Add(opcionLlamada1);
-            context.SaveChanges();
+            //context.opcionLlamada.Add(opcionLlamada1);
+            //context.SaveChanges();
 
             Categoria categoria = new Categoria()
             {
@@ -107,20 +107,20 @@ namespace PPAI_Entrega3.Gestor
                 Opciones = listaOpciones
             };
 
-            context.Categoria.Add(categoria);
-            context.SaveChanges();
+            //context.Categoria.Add(categoria);
+            //context.SaveChanges();
 
             Cliente cliente = new Cliente("23097372", "Juan Pérez", "9q9999", informacionClientes);
 
-            context.Cliente.Add(cliente);
-            context.SaveChanges();
+            //context.Cliente.Add(cliente);
+            //context.SaveChanges();
 
             Iniciada iniciada = new Iniciada("Iniciada");
             EnCurso enCurso = new EnCurso("En Curso");
             Finalizada finalizada = new Finalizada("Finalizada");
             Cancelada cancelada = new Cancelada("Cancelada");
 
-            context.Estado.AddRange(iniciada, enCurso, finalizada, cancelada);
+            //context.Estado.AddRange(iniciada, enCurso, finalizada, cancelada);
 
             DateTime tiempo1 = new DateTime(1, 1, 1, 1, 1, 1);
 
@@ -128,8 +128,8 @@ namespace PPAI_Entrega3.Gestor
             List<CambioEstado> historialEstados = new List<CambioEstado>();
             historialEstados.Add(cambioEstado);
 
-            context.CambioEstado.Add(cambioEstado);
-            context.SaveChanges();
+            //context.CambioEstado.Add(cambioEstado);
+            //context.SaveChanges();
 
             Llamada llamada = new Llamada()
             {
@@ -145,8 +145,8 @@ namespace PPAI_Entrega3.Gestor
                 Estado = iniciada
             };
 
-            context.Llamada.Add(llamada);
-            context.SaveChanges();
+            //context.Llamada.Add(llamada);
+            //context.SaveChanges();
 
 
             // Llamar a los métodos del formulario para mostrar los datos
@@ -154,7 +154,35 @@ namespace PPAI_Entrega3.Gestor
             interfaz.MostrarCategoria(categoria.NroOrden);
             interfaz.MostrarOpcion(opcionLlamada1.NroOrden);
             interfaz.MostrarSubopcion(subOpcion.NroOrden);
-            return (llamada, categoria);
+
+
+
+            Llamada llamadaDB;
+            Categoria categoriaDB;
+            using (var contexto = new IVRContexto())
+            {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+                llamadaDB = context.Llamada
+                    .Include(e => e.Cliente)
+                        .ThenInclude(i => i.InformacionCliente)
+                            .ThenInclude(t => t.TipoInformacion)
+                    .Include(e => e.OpcionLlamada)
+                    .Include(e => e.SubOpcionLlamada)
+                        .ThenInclude(v => v.Validaciones)
+                            .ThenInclude(t => t.TipoInformacion)
+                    .Include(e => e.CambiosDeEstado)
+                    .Include(e => e.Estado)
+                    .FirstOrDefault(e => e.Id == 1);
+
+                categoriaDB = context.Categoria
+                    .Include(e => e.Opciones)
+                    .FirstOrDefault(e => e.Id == 1);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+
+
+            }
+
+            return (llamadaDB, categoriaDB);
         }
 
     }

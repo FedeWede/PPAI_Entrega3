@@ -5,6 +5,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PPAI_Entrega3.Persistencia;
+using Microsoft.EntityFrameworkCore;
 
 namespace PPAI_Entrega3.Entidades
 {
@@ -26,6 +28,17 @@ namespace PPAI_Entrega3.Entidades
             llamada.setCambioEstado(nuevoCambioEstado);
             llamada.setEstadoLlamada(nuevoEstado);
         
+            using (IVRContexto context = new IVRContexto())
+            {
+                context.Entry(ce).State = EntityState.Modified;
+                context.CambioEstado.Add(nuevoCambioEstado);
+
+                context.Entry(llamada).State = EntityState.Modified;
+                context.SaveChanges();
+
+            }
+
+
         }
 
         public override Estado crearProximoEstado()

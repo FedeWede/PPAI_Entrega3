@@ -5,6 +5,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PPAI_Entrega3.Persistencia;
+using Microsoft.EntityFrameworkCore;
 
 namespace PPAI_Entrega3.Entidades
 {
@@ -22,13 +24,24 @@ namespace PPAI_Entrega3.Entidades
         public override void tomadaPorOperador(DateTime fechaHoraActual, Llamada llamada, List<CambioEstado> cambiosEstado)
         {
             CambioEstado ce = buscarUltimoEstado(cambiosEstado);
-            ce.setFechaHoraFin(fechaHoraActual);
+            ce.setFechaHoraFin(fechaHoraActual); // ACCESO A BD
 
-            Estado nuevoEstado = crearProximoEstado();
-            CambioEstado nuevoCambioEstado = crearCambioEstado(fechaHoraActual, nuevoEstado);
+            Estado nuevoEstado = crearProximoEstado(); //ACCESO BD
+            CambioEstado nuevoCambioEstado = crearCambioEstado(fechaHoraActual, nuevoEstado); // ACCESO BD
 
-            llamada.setCambioEstado(nuevoCambioEstado);
-            llamada.setEstadoLlamada(nuevoEstado);
+            llamada.setCambioEstado(nuevoCambioEstado); // ACCESO BD
+            llamada.setEstadoLlamada(nuevoEstado); // ACCESO BD
+
+            using (IVRContexto context = new IVRContexto())
+            {
+                context.Entry(ce).State = EntityState.Modified;
+                context.CambioEstado.Add(nuevoCambioEstado);
+
+                context.Entry(llamada).State = EntityState.Modified;
+                context.SaveChanges();
+
+            };
+
 
 
         }

@@ -17,6 +17,8 @@ namespace PPAI_Entrega3.Gestor
         public string respuestaSeleccionada { get; set; }
         public string opValidacion { get; set; }
 
+        public Llamada LlamadaSeleccionada { get; set; }
+
         public GestorRegistrarRespuesta(InterfazRegistrarRespuesta interfazRegistrarLlamada)
         {
             this.fechaHoraActual = obtenerFechaHoraActual();
@@ -58,6 +60,8 @@ namespace PPAI_Entrega3.Gestor
         // El controlador recibe los datos de la llamada e inicia la ejecución del CU:
         public void nuevaRespuestaOperador(Llamada llamada1, Categoria categoria, GestorRegistrarRespuesta gestorRegistrarRespuesta)
         {
+            llamada = llamada1; // NO SE
+
             string tiempo1 = obtenerFechaHoraActual();
             llamada1.tomadaPorOperador(tiempo1);
             buscarDatosLlamada(llamada1, categoria);
@@ -65,7 +69,7 @@ namespace PPAI_Entrega3.Gestor
             interfazRegistrarLlamada.mostrarDatos(datosLlamada);
             // Cuando se cierre la interfaz:
             string tiempo2 = obtenerFechaHoraActual();
-            llamada1.calcularDuracion(tiempo1, tiempo2);
+            llamada1.calcularDuracion(tiempo1, tiempo2); //HAY QUE GUARDAR?? Guardar también la acción requerida (creo)
             llamada1.finalizar(tiempo2, respuestaSeleccionada); // se crea el estado finalizada
             finCU();
         }
@@ -116,7 +120,7 @@ namespace PPAI_Entrega3.Gestor
         }
         public string tomarAccion(string acc)
         {
-
+            llamada.DetalleAccionRequerida = acc;
             string accion = acc;
             return accion;
         }
@@ -124,6 +128,7 @@ namespace PPAI_Entrega3.Gestor
         public void tomarConfirmacion(string accion)
         {
             llamadaCU28(accion);
+
         }
 
         public void llamadaCU28(string accion)

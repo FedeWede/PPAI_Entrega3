@@ -59,13 +59,13 @@ namespace PPAI_Entrega3.Entidades
 
         public void setCambioEstado(CambioEstado estado)
         {
-            this.CambiosDeEstado.Add(estado);
+            this.CambiosDeEstado.Add(estado); // ACCESO BD
         }
 
         public void setEstadoLlamada(Estado estado)
         {
 
-            this.Estado = estado;
+            this.Estado = estado; // ACCESO BD
 
         }
 
@@ -149,9 +149,10 @@ namespace PPAI_Entrega3.Entidades
         }
         public void finalizar(string fechaHoraActual, string respuesta)
         {
-            this.DescripcionOperador = respuesta;
+            this.DescripcionOperador = respuesta; //ACCESO BD
             DateTime fechaFormateada = DateTime.Parse(fechaHoraActual);
             this.Estado.finalizar(fechaFormateada, this, CambiosDeEstado);
+
         }
     }
 
