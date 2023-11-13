@@ -12,25 +12,24 @@ namespace PPAI_Entrega3.Gestor
 {
     public class GestorRegistrarRespuesta
     {
-        public List<string> datosLlamada { get; set; }
-        public string fechaHoraActual { get; set; }
-        public string respuestaSeleccionada { get; set; }
-        public string opValidacion { get; set; }
-
+        public List<string> DatosLlamada { get; set; }
+        public string FechaHoraActual { get; set; }
+        public string RespuestaSeleccionada { get; set; }
+        public string OpValidacion { get; set; }
         public Llamada LlamadaSeleccionada { get; set; }
 
         public GestorRegistrarRespuesta(InterfazRegistrarRespuesta interfazRegistrarLlamada)
         {
-            this.fechaHoraActual = obtenerFechaHoraActual();
+            this.FechaHoraActual = obtenerFechaHoraActual();
             this.interfazRegistrarLlamada = interfazRegistrarLlamada;
 
         }
         public GestorRegistrarRespuesta(List<string> datosLlamada, string fechaHoraActual, string respuestaSeleccionada, string opValidacion)
         {
-            this.datosLlamada = datosLlamada;
-            this.fechaHoraActual = fechaHoraActual;
-            this.respuestaSeleccionada = respuestaSeleccionada;
-            this.opValidacion = opValidacion;
+            this.DatosLlamada = datosLlamada;
+            this.FechaHoraActual = fechaHoraActual;
+            this.RespuestaSeleccionada = respuestaSeleccionada;
+            this.OpValidacion = opValidacion;
         }
 
         public GestorRegistrarRespuesta(InterfazIVR interfazIVR)
@@ -58,56 +57,57 @@ namespace PPAI_Entrega3.Gestor
         }
 
         // El controlador recibe los datos de la llamada e inicia la ejecución del CU:
-        public void nuevaRespuestaOperador(Llamada llamada1, Categoria categoria, GestorRegistrarRespuesta gestorRegistrarRespuesta)
+        public void nuevaRespuestaOperador(Llamada llamada1, Categoria categoria)
         {
-            llamada = llamada1; // NO SE
-
+            LlamadaSeleccionada = llamada1;
             string tiempo1 = obtenerFechaHoraActual();
             llamada1.tomadaPorOperador(tiempo1);
             buscarDatosLlamada(llamada1, categoria);
-            InterfazRegistrarRespuesta interfazRegistrarLlamada = new InterfazRegistrarRespuesta(llamada1, gestorRegistrarRespuesta);
-            interfazRegistrarLlamada.mostrarDatos(datosLlamada);
+            InterfazRegistrarRespuesta interfazRegistrarLlamada = new InterfazRegistrarRespuesta(llamada1, this);
+            interfazRegistrarLlamada.mostrarDatos(DatosLlamada);
             // Cuando se cierre la interfaz:
             string tiempo2 = obtenerFechaHoraActual();
-            llamada1.calcularDuracion(tiempo1, tiempo2); //HAY QUE GUARDAR?? Guardar también la acción requerida (creo)
-            llamada1.finalizar(tiempo2, respuestaSeleccionada); // se crea el estado finalizada
+            llamada1.calcularDuracion(tiempo1, tiempo2);
+            llamada1.setDescripcionOperador(RespuestaSeleccionada);
+            llamada1.finalizar(tiempo2); // se crea el estado finalizada
             finCU();
         }
 
         public void buscarDatosLlamada(Llamada llamada, Categoria categoria)
         {
-            this.datosLlamada = new List<string>();
+            this.DatosLlamada = new List<string>();
 
             string nombreCliente = llamada.getCliente(); // Mostrar
-            datosLlamada.Add(nombreCliente);
+            DatosLlamada.Add(nombreCliente);
             ;
 
             ((int, string), string) tupla = categoria.getDescripcionCategoriaYOpcion(llamada.OpcionLlamada, llamada.SubOpcionLlamada);
 
             string nombreCate = tupla.Item1.Item2; // Mostrar
-            datosLlamada.Add(nombreCate);
+            DatosLlamada.Add(nombreCate);
             string nombreOpcion = tupla.Item1.Item2; // Mostrar
-            datosLlamada.Add(nombreOpcion);
+            DatosLlamada.Add(nombreOpcion);
             int nroOrden = tupla.Item1.Item1; // Mostrar
-            datosLlamada.Add(nroOrden.ToString());
+            DatosLlamada.Add(nroOrden.ToString());
 
 
             List<string> mensajes = categoria.getValidaciones(llamada.OpcionLlamada, llamada.SubOpcionLlamada, llamada.SubOpcionLlamada.Validaciones); // Mostrar
 
-            foreach (string mensaje in mensajes) datosLlamada.Add(mensaje);
+            foreach (string mensaje in mensajes) DatosLlamada.Add(mensaje);
 
             string fechaHora = obtenerFechaHoraActual();
-            datosLlamada.Add(fechaHora);
+            DatosLlamada.Add(fechaHora);
 
             foreach (string mensaje in mensajes)
             {
-                this.opValidacion = llamada.Cliente.buscarInfoCorrecta(llamada, mensaje);
-                datosLlamada.Add(opValidacion);
+                this.OpValidacion = llamada.Cliente.buscarInfoCorrecta(llamada, mensaje);
+                DatosLlamada.Add(OpValidacion);
             }
         }
 
         public bool tomarOpValidacion(string respuesta, string validacion, Llamada llamada)
         {
+
             bool bandera = llamada.validarInformacionCliente(respuesta, validacion, llamada);
             return bandera;
         }
@@ -116,11 +116,11 @@ namespace PPAI_Entrega3.Gestor
         {
             string respuesta = res;
 
-            this.respuestaSeleccionada = res;
+            this.RespuestaSeleccionada = res;
         }
         public string tomarAccion(string acc)
         {
-            llamada.DetalleAccionRequerida = acc;
+            LlamadaSeleccionada.DetalleAccionRequerida = acc;
             string accion = acc;
             return accion;
         }

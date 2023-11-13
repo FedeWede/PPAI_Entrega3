@@ -19,22 +19,20 @@ namespace PPAI_Entrega3.Entidades
 
         public override void finalizar(DateTime fechaHoraActual, Llamada llamada, List<CambioEstado> cambiosestado)
         {
-            CambioEstado ce = buscarUltimoEstado(cambiosestado);
+            CambioEstado ce = buscarUltimoEstado(cambiosestado); 
             ce.setFechaHoraFin(fechaHoraActual);
 
-            Estado nuevoEstado = crearProximoEstado();
-            CambioEstado nuevoCambioEstado = crearCambioEstado(fechaHoraActual, nuevoEstado);
+            Estado nuevoEstado = crearProximoEstado(); 
+            CambioEstado nuevoCambioEstado = crearCambioEstado(fechaHoraActual, nuevoEstado); 
 
-            llamada.setCambioEstado(nuevoCambioEstado);
-            llamada.setEstadoLlamada(nuevoEstado);
+            llamada.setCambioEstado(nuevoCambioEstado); 
+            llamada.setEstadoLlamada(nuevoEstado); 
         
             using (IVRContexto context = new IVRContexto())
             {
-                context.Entry(ce).State = EntityState.Modified;
-                context.CambioEstado.Add(nuevoCambioEstado);
-
-                context.Entry(llamada).State = EntityState.Modified;
-                context.SaveChanges();
+                context.actualizarCambioEstado(ce); 
+                context.guardarNuevoCambioEstado(nuevoCambioEstado); 
+                context.actualizarLlamada(llamada); 
 
             }
 

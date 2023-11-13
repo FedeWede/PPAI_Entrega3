@@ -24,21 +24,19 @@ namespace PPAI_Entrega3.Entidades
         public override void tomadaPorOperador(DateTime fechaHoraActual, Llamada llamada, List<CambioEstado> cambiosEstado)
         {
             CambioEstado ce = buscarUltimoEstado(cambiosEstado);
-            ce.setFechaHoraFin(fechaHoraActual); // ACCESO A BD
+            ce.setFechaHoraFin(fechaHoraActual); 
 
-            Estado nuevoEstado = crearProximoEstado(); //ACCESO BD
-            CambioEstado nuevoCambioEstado = crearCambioEstado(fechaHoraActual, nuevoEstado); // ACCESO BD
+            Estado nuevoEstado = crearProximoEstado(); 
+            CambioEstado nuevoCambioEstado = crearCambioEstado(fechaHoraActual, nuevoEstado); 
 
-            llamada.setCambioEstado(nuevoCambioEstado); // ACCESO BD
-            llamada.setEstadoLlamada(nuevoEstado); // ACCESO BD
+            llamada.setCambioEstado(nuevoCambioEstado); 
+            llamada.setEstadoLlamada(nuevoEstado); 
 
             using (IVRContexto context = new IVRContexto())
             {
-                context.Entry(ce).State = EntityState.Modified;
-                context.CambioEstado.Add(nuevoCambioEstado);
-
-                context.Entry(llamada).State = EntityState.Modified;
-                context.SaveChanges();
+                context.actualizarCambioEstado(ce);
+                context.guardarNuevoCambioEstado(nuevoCambioEstado);
+                context.actualizarLlamada(llamada);
 
             };
 

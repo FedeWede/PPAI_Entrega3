@@ -31,6 +31,26 @@ namespace PPAI_Entrega3.Persistencia
         public DbSet<Iniciada>  Iniciada { get; set; }
 
 
-        
+        public void actualizarLlamada(Llamada llamada)
+        {
+            Entry(llamada).State = EntityState.Modified;
+            SaveChanges();
+
+        }
+
+        public void actualizarCambioEstado(CambioEstado ce)
+        {
+            Entry(ce).State = EntityState.Modified; //Modifica el anterior cambio de estado en la base de datos, poniendole la FechaFin
+            SaveChanges();
+
+        }
+
+        public void guardarNuevoCambioEstado(CambioEstado nuevoCambioEstado) 
+        {
+            CambioEstado.Add(nuevoCambioEstado);
+            SaveChanges();
+        }
+
+
     }
 }

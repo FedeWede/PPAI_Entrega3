@@ -49,7 +49,7 @@ namespace PPAI_Entrega3.Entidades
             this.Cliente = cliente;
             this.SubOpcionLlamada = subOpcionLlamada;
             this.OpcionLlamada = opcionLlamada;
-            this.CambiosDeEstado = cambioDeEstado; // Cambiado por el new
+            this.CambiosDeEstado = cambioDeEstado; 
             this.Estado = estado;
         }
 
@@ -59,13 +59,13 @@ namespace PPAI_Entrega3.Entidades
 
         public void setCambioEstado(CambioEstado estado)
         {
-            this.CambiosDeEstado.Add(estado); // ACCESO BD
+            this.CambiosDeEstado.Add(estado); 
         }
 
         public void setEstadoLlamada(Estado estado)
         {
 
-            this.Estado = estado; // ACCESO BD
+            this.Estado = estado; 
 
         }
 
@@ -147,9 +147,8 @@ namespace PPAI_Entrega3.Entidades
             DateTime Fin = DateTime.Parse(fechaHoraFinalizada);
             this.Duracion = Fin - Inicio;
         }
-        public void finalizar(string fechaHoraActual, string respuesta)
+        public void finalizar(string fechaHoraActual)
         {
-            this.DescripcionOperador = respuesta; //ACCESO BD
             DateTime fechaFormateada = DateTime.Parse(fechaHoraActual);
             this.Estado.finalizar(fechaFormateada, this, CambiosDeEstado);
 

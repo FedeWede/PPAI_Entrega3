@@ -43,26 +43,29 @@ namespace PPAI_Entrega3.NewFolder1
             textBox1.Text = dni;
         }
 
-        public void MostrarCategoria(int categoria)
+        public void MostrarCategoria(int categoria, string nombre)
         {
-            textBox2.Text = categoria.ToString();
+            string textoAMostrar = categoria.ToString() + ": " + nombre;
+            textBox2.Text = textoAMostrar;
         }
 
-        public void MostrarOpcion(int opcion)
+        public void MostrarOpcion(int opcion, string nombre)
         {
-            textBox3.Text = opcion.ToString();
+            string textoAMostrar = opcion.ToString() + ": " + nombre;
+            textBox3.Text = textoAMostrar;
         }
 
-        public void MostrarSubopcion(int subopcion)
+        public void MostrarSubopcion(int subopcion, string nombre)
         {
-            textBox4.Text = subopcion.ToString();
+            string textoAMostrar = subopcion.ToString() + ": " + nombre;
+            textBox4.Text = textoAMostrar;
         }
 
         // Con este botón simulamos que el cliente selecciona la opción Hablar con operador:
         private void button5_Click(object sender, EventArgs e)
         {
             (Llamada llamada1, Categoria categoria) = gestorRegistrarLlamada.opcionNuevaRespuestaOperador();
-            this.gestorRegistrarRespuesta.nuevaRespuestaOperador(llamada1,categoria, gestorRegistrarRespuesta);
+            this.gestorRegistrarRespuesta.nuevaRespuestaOperador(llamada1,categoria);
         }
 
         private void button1_Click(object sender, EventArgs e)
