@@ -181,7 +181,6 @@ namespace PPAI_Entrega3.Interfaces
             {
                 MessageBox.Show("Respuesta confirmada", "Confirmación");
                 gestorRegistrarRespuesta.tomarConfirmacion(acc);
-                MessageBox.Show("Respuesta operador registrada exitosamente!");
                 this.Close();
                 gestorRegistrarRespuesta.interfazIVR.Close();
             }
@@ -240,6 +239,7 @@ namespace PPAI_Entrega3.Interfaces
             MessageBox.Show("CU 17 cancelado por llamada cortada", "Cancelar", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Cerrar el formulario
+            gestorRegistrarRespuesta.cancelar();
             this.Close();
         }
 

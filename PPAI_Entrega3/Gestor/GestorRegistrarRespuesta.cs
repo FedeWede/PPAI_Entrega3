@@ -138,6 +138,13 @@ namespace PPAI_Entrega3.Gestor
             MessageBox.Show("CU28 finalizado exitosamente!");
         }
 
+        public void cancelar()
+        {
+            string tiempo = obtenerFechaHoraActual();
+            LlamadaSeleccionada.cancelar(tiempo);
+
+        }
+
         public void finCU()
         {
 

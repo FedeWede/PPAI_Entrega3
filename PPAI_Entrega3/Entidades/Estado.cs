@@ -37,10 +37,12 @@ namespace PPAI_Entrega3.Entidades
             return this.Nombre;
         }
 
-        public virtual void tomadaPorOperador(DateTime fechaHoraActual, Llamada llamada, List<CambioEstado> cambioestado) { }
+        public virtual void tomadaPorOperador(DateTime fechaHoraActual, Llamada llamada, List<CambioEstado> cambioEstado) { }
 
 
-        public virtual void finalizar(DateTime fechaHoraActual, Llamada llamada, List<CambioEstado> cambioestado) { }
+        public virtual void finalizar(DateTime fechaHoraActual, Llamada llamada, List<CambioEstado> cambioEstado) { }
+
+        public virtual void cancelar(DateTime fechaHoraActual, Llamada llamada, List<CambioEstado> cambioEstado) { }
 
 
         public abstract Estado crearProximoEstado();

@@ -155,7 +155,6 @@ namespace PPAI_Entrega3.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("DescripcionOperador")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("DetalleAccionRequerida")

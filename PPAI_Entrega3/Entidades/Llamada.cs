@@ -17,7 +17,7 @@ namespace PPAI_Entrega3.Entidades
         // Atributos
         [Key]
         public int Id {  get; set; }
-        public string DescripcionOperador { get; set; }
+        public string? DescripcionOperador { get; set; }
         public string DetalleAccionRequerida { get; set; }
         public TimeSpan Duracion { get; set; }
         public bool EncuestaEnviada { get; set; }
@@ -153,6 +153,14 @@ namespace PPAI_Entrega3.Entidades
             this.Estado.finalizar(fechaFormateada, this, CambiosDeEstado);
 
         }
+
+        public void cancelar(string fechaHoraActual) 
+        {
+            DateTime fechaFormateada = DateTime.Parse(fechaHoraActual);
+            this.Estado.cancelar(fechaFormateada, this, CambiosDeEstado);
+
+        }
+
     }
 
 }

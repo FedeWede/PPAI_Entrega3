@@ -118,7 +118,7 @@ namespace PPAI_Entrega3.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    DescripcionOperador = table.Column<string>(type: "TEXT", nullable: false),
+                    DescripcionOperador = table.Column<string>(type: "TEXT", nullable: true),
                     DetalleAccionRequerida = table.Column<string>(type: "TEXT", nullable: false),
                     Duracion = table.Column<TimeSpan>(type: "TEXT", nullable: false),
                     EncuestaEnviada = table.Column<bool>(type: "INTEGER", nullable: false),

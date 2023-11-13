@@ -11,7 +11,7 @@ using PPAI_Entrega3.Persistencia;
 namespace PPAI_Entrega3.Migrations
 {
     [DbContext(typeof(IVRContexto))]
-    [Migration("20231112213034_InitialMigration")]
+    [Migration("20231113223022_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -158,7 +158,6 @@ namespace PPAI_Entrega3.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("DescripcionOperador")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("DetalleAccionRequerida")

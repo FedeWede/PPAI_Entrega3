@@ -39,9 +39,31 @@ namespace PPAI_Entrega3.Entidades
 
         }
 
+
+        public override void cancelar(DateTime fechaHoraActual, Llamada llamada, List<CambioEstado> cambioEstado)
+        {
+            CambioEstado ce = buscarUltimoEstado(cambioEstado);
+            ce.setFechaHoraFin(fechaHoraActual);
+
+            Estado nuevoEstado = new Cancelada("Cancelada");
+            CambioEstado nuevoCambioEstado = crearCambioEstado(fechaHoraActual, nuevoEstado);
+
+            llamada.setCambioEstado(nuevoCambioEstado);
+            llamada.setEstadoLlamada(nuevoEstado);
+
+            using (IVRContexto context = new IVRContexto())
+            {
+                context.actualizarCambioEstado(ce);
+                context.guardarNuevoCambioEstado(nuevoCambioEstado);
+                context.actualizarLlamada(llamada);
+
+            }
+        }
+
+
         public override Estado crearProximoEstado()
         {
-            Finalizada nuevoEstado = new Finalizada("Finalizada"); //REVISAR
+            Finalizada nuevoEstado = new Finalizada("Finalizada");
             return nuevoEstado;
 
         }
