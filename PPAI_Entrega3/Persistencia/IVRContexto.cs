@@ -51,6 +51,33 @@ namespace PPAI_Entrega3.Persistencia
             SaveChanges();
         }
 
+        public Llamada materializarLlamada(int Id) 
+        {
+            Llamada llamadaDB = Llamada
+                        .Include(e => e.Cliente)
+                            .ThenInclude(i => i.InformacionCliente)
+                                .ThenInclude(t => t.TipoInformacion)
+                        .Include(e => e.OpcionLlamada)
+                        .Include(e => e.SubOpcionLlamada)
+                            .ThenInclude(v => v.Validaciones)
+                                .ThenInclude(t => t.TipoInformacion)
+                        .Include(e => e.CambiosDeEstado)
+                        .Include(e => e.Estado)
+                        .FirstOrDefault(e => e.Id == 1);
+
+            return llamadaDB;
+
+        }
+
+        public Categoria materializarCategoria(int Id)
+        {
+            Categoria categoriaDB = Categoria
+                    .Include(e => e.Opciones)
+                    .FirstOrDefault(e => e.Id == 1);
+
+            return categoriaDB;
+        }
+
 
     }
 }

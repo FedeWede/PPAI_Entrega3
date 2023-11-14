@@ -31,29 +31,31 @@ namespace PPAI_Entrega3.Gestor
         public InterfazRegistrarRespuesta interfazRegistrarLlamada;
 
         //Simulamos el fin del CU Registrar Llamada, trayendo una llamada desde la base de datos
-        public (Llamada, Categoria) opcionNuevaRespuestaOperador()
+        public void opcionNuevaRespuestaOperador(int IdLlamada, int IdCategoria)
+        {
+            Llamada llamadaDB;
+            Categoria categoriaDB;
+
+
+            using (var contexto = new IVRContexto())
+            {
+                llamadaDB = contexto.materializarLlamada(IdLlamada);
+                categoriaDB = contexto.materializarCategoria(IdCategoria);
+
+            }
+
+            interfaz.gestorRegistrarRespuesta.nuevaRespuestaOperador(llamadaDB, categoriaDB);
+        }
+
+        public (int, int) iniciarCU()
         {
             Llamada llamadaDB;
             Categoria categoriaDB;
             using (var contexto = new IVRContexto())
             {
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-                llamadaDB = contexto.Llamada
-                    .Include(e => e.Cliente)
-                        .ThenInclude(i => i.InformacionCliente)
-                            .ThenInclude(t => t.TipoInformacion)
-                    .Include(e => e.OpcionLlamada)
-                    .Include(e => e.SubOpcionLlamada)
-                        .ThenInclude(v => v.Validaciones)
-                            .ThenInclude(t => t.TipoInformacion)
-                    .Include(e => e.CambiosDeEstado)
-                    .Include(e => e.Estado)
-                    .FirstOrDefault(e => e.Id == 1);
-
-                categoriaDB = contexto.Categoria
-                    .Include(e => e.Opciones)
-                    .FirstOrDefault(e => e.Id == 1);
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+                llamadaDB = contexto.materializarLlamada(1);
+                categoriaDB = contexto.materializarCategoria(1);
+            }            
 
 
                 interfaz.MostrarDNI(llamadaDB.Cliente.Dni);
@@ -61,10 +63,8 @@ namespace PPAI_Entrega3.Gestor
                 interfaz.MostrarOpcion(categoriaDB.Opciones[0].SubOpciones[0].NroOrden, categoriaDB.Opciones[0].SubOpciones[0].Nombre);
                 interfaz.MostrarSubopcion(categoriaDB.Opciones[0].NroOrden, categoriaDB.Opciones[0].Nombre);
 
-            }
+            return (llamadaDB.Id, categoriaDB.Id);
 
-            return (llamadaDB, categoriaDB);
         }
-
     }
 }

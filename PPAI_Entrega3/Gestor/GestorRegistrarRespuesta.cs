@@ -18,6 +18,7 @@ namespace PPAI_Entrega3.Gestor
         public string OpValidacion { get; set; }
         public Llamada LlamadaSeleccionada { get; set; }
 
+        /*
         public GestorRegistrarRespuesta(InterfazRegistrarRespuesta interfazRegistrarLlamada)
         {
             this.FechaHoraActual = obtenerFechaHoraActual();
@@ -30,7 +31,7 @@ namespace PPAI_Entrega3.Gestor
             this.FechaHoraActual = fechaHoraActual;
             this.RespuestaSeleccionada = respuestaSeleccionada;
             this.OpValidacion = opValidacion;
-        }
+        } */
 
         public GestorRegistrarRespuesta(InterfazIVR interfazIVR)
         {

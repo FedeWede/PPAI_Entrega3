@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PPAI_Entrega3.Interfaces;
 using PPAI_Entrega3.Entidades;
+using System.Runtime.CompilerServices;
 
 namespace PPAI_Entrega3.NewFolder1
 {
@@ -20,6 +21,8 @@ namespace PPAI_Entrega3.NewFolder1
         public GestorRegistrarLlamada gestorRegistrarLlamada;
 
         public GestorRegistrarRespuesta gestorRegistrarRespuesta;
+
+        public (int, int) IDsLlamada;
 
         public InterfazIVR()
         {
@@ -34,7 +37,8 @@ namespace PPAI_Entrega3.NewFolder1
 
         private void InterfazIVR_Load(object sender, EventArgs e)
         {
-            (Llamada llamada, Categoria categoria) = gestorRegistrarLlamada.opcionNuevaRespuestaOperador();
+            (int, int) tupla = gestorRegistrarLlamada.iniciarCU();
+            IDsLlamada = tupla;
 
         }
 
@@ -64,8 +68,7 @@ namespace PPAI_Entrega3.NewFolder1
         // Con este botón simulamos que el cliente selecciona la opción Hablar con operador:
         private void button5_Click(object sender, EventArgs e)
         {
-            (Llamada llamada1, Categoria categoria) = gestorRegistrarLlamada.opcionNuevaRespuestaOperador();
-            this.gestorRegistrarRespuesta.nuevaRespuestaOperador(llamada1,categoria);
+            gestorRegistrarLlamada.opcionNuevaRespuestaOperador(IDsLlamada.Item1, IDsLlamada.Item2);
         }
 
         private void button1_Click(object sender, EventArgs e)
