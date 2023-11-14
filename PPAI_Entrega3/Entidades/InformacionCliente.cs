@@ -48,6 +48,7 @@ namespace PPAI_Entrega3.Entidades
         public bool esValidacion(string val)
         {
             bool bandera = false;
+            if (this.Validacion == null) { return bandera = false;  };
             string nombreVal = this.Validacion.Nombre;
             if (val == nombreVal)
             {
